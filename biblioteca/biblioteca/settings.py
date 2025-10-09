@@ -29,6 +29,16 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SWAGGER_SETTINGS = { 
+    'SECURITY_DEFINITIONS': { 
+        'Bearer': { 
+            'type': 'apiKey', 
+            'name': 'Authorization', 
+            'in': 'header', 
+            'description': 'JWT Authorization. Use o formato: Bearer <seu_token>' 
+        } 
+    } 
+} 
 
 INSTALLED_APPS = [ 
 'django.contrib.admin', 
