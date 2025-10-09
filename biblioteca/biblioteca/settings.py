@@ -30,18 +30,31 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# Application definition 
 INSTALLED_APPS = [ 
-'django.contrib.admin', 
-'django.contrib.auth', 
-'django.contrib.contenttypes', 
-'django.contrib.sessions', 
-'django.contrib.messages', 
-'django.contrib.staticfiles', 
-'rest_framework',         
-'livros',                  
-'rest_framework_simplejwt',
-'drf_yasg', 
+    'django.contrib.admin', 
+    'django.contrib.auth', 
+    'django.contrib.contenttypes', 
+    'django.contrib.sessions', 
+    'django.contrib.messages', 
+    'django.contrib.staticfiles', 
+    'rest_framework', 
+    'drf_spectacular', 
+    'livros', 
 ] 
+REST_FRAMEWORK = { 
+    'DEFAULT_RENDERER_CLASSES': ( 
+        'drf_hal_json.renderers.JSONRenderer', 
+        'rest_framework.renderers.BrowsableAPIRenderer', 
+    ), 
+    'DEFAULT_PARSER_CLASSES': ( 
+        'drf_hal_json.parsers.JSONParser', 
+        'rest_framework.parsers.FormParser', 
+        'rest_framework.parsers.MultiPartParser', 
+    ), 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', 
+} 
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
