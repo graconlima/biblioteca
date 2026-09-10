@@ -40,6 +40,29 @@ SWAGGER_SETTINGS = {
     } 
 } 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # Se houver SessionAuthentication ou BasicAuthentication aqui, mantenha-as abaixo
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', 
+    ),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    # Aumente o tempo de acesso para a aula (ex: 1 hora)
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    
+    # Aumente o tempo do refresh para a aula (ex: 7 dias)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+}
+
 INSTALLED_APPS = [ 
 'django.contrib.admin', 
 'django.contrib.auth', 
